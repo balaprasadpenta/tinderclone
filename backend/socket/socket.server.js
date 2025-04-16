@@ -38,5 +38,5 @@ export const getIO = () => {
     return io;
 }
 
-export const getConnectedUsers = () => connectedUsers
+export const getConnectedUsers = () => connectedUsers;
 
