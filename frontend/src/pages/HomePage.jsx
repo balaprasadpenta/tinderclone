@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import Sidebar from "../components/sidebar"
+import Sidebar from "../components/Sidebar"
 import { useMatchStore } from "../store/useMatchStore"
 import  Header  from "../components/Header"
 import { Frown } from "lucide-react"
