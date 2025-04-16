@@ -1,0 +1,20 @@
+{
+  "name": "tinderclone",
+  "version": "1.0.0",
+  "description": "tinder clone",
+  "homepage": "https://github.com/balaprasadpenta/tinderclone#readme",
+  "bugs": {
+    "url": "https://github.com/balaprasadpenta/tinderclone/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balaprasadpenta/tinderclone.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
