@@ -41,9 +41,17 @@ if(process.env.NODE_ENV === 'production'){
   app.use(express.static(path.join(__dirname, '/frontend/dist')))
 
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html" ))
+    res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html" ))
   })
 }
+
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+});
+
+process.on('unhandledRejection', (err) => {
+  console.error('Unhandled Rejection:', err);
+});
 
 httpServer.listen(PORT, () => {
   console.log(`server started at ${PORT}`);

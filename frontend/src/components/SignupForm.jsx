@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useAuthStore } from '../store/useAuthStore'
 
 const SignupForm = () => {
@@ -12,7 +12,25 @@ const SignupForm = () => {
     const {signup, loading}  = useAuthStore()
 
     return (
-        <form className='space-y-6' onSubmit={(e) => { e.preventDefault(); signup(name, email, password, gender, age, genderPreference) }}>
+        <form className='space-y-6' onSubmit={(e) => { 
+            e.preventDefault(); 
+            console.log('Submitting form with data:', {
+                name,
+                email,
+                password,
+                age: Number(age),
+                gender,
+                genderPreference
+            });
+            signup({
+                name,
+                email,
+                password,
+                age: Number(age),
+                gender,
+                genderPreference
+            }); 
+        }}>
             <div>
                 <label htmlFor='name' className='block text-sm font-medium text-gray-700'>Name</label>
                 <div className='mt-1'>

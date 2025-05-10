@@ -12,11 +12,17 @@ export const useAuthStore = create((set) => ({
     try {
       set({ loading: true });
       const res = await axiosInstance.post("/auth/signup", signupData);
-      console.log(signupData)
-      set({ authUser: res.data.user });
-      toast.success("account created successfully");
+      console.log('Signup response:', res.data);
+      if (res.data.success && res.data.user) {
+        set({ authUser: res.data.user });
+        initializeSocket(res.data.user._id);
+        toast.success("Account created successfully");
+      } else {
+        throw new Error("Signup failed");
+      }
     } catch (error) {
-      toast.error(error.response.data.message || "something went wrong");
+      console.error('Signup error:', error);
+      toast.error(error.response?.data?.message || "Something went wrong");
     } finally {
       set({ loading: false });
     }

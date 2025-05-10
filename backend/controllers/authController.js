@@ -6,10 +6,10 @@ const signToken = (id) => {
 }
 
 export const signup = async (req, res) => {
-    const { name, email, password, age, gender, genderpreference } = req.body
+    const { name, email, password, age, gender, genderPreference } = req.body
     try {
-        if (!name || !email || !password || !age || !gender || !genderpreference) {
-            res.status(400).json({
+        if (!name || !email || !password || !age || !gender || !genderPreference) {
+            return res.status(400).json({
                 msg: "all fields are required",
                 success: false
             })
@@ -23,12 +23,12 @@ export const signup = async (req, res) => {
         if (password.length < 6) {
             return res.status(400).json({
                 msg: "password must be atleast 6 characters",
-                success: fasle
+                success: false
             })
         }
 
         const newUser = await User.create({
-            name, email, password, age, gender, genderpreference
+            name, email, password, age, gender, genderPreference
         })
         const token = signToken(newUser._id)
 
@@ -60,7 +60,7 @@ export const login = async (req, res) => {
         }
         const user = await User.findOne({ email }).select('+password')
         if (!user || !(await user.matchPassword(password))) {
-            return res.stats(401).json({
+            return res.status(401).json({
                 msg: "Invalid email or password",
                 success: false
             })
